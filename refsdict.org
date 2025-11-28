@@ -1,0 +1,56 @@
+# *-* coding:utf8 *-*
+
+* 基础知识 chap:cha1
+
+** 线性方程组与矩阵消元法 sec:11
+
+*** 二元一次方程组 sec:111
+
+**** 有唯一解的情况 sec:1111
+
+*** 三元一次方程组 secex:ThreeUnknownsEquations
+
+*** 线性方程组的矩阵消元法 sec:112
+
+| 线性方程组通式        | eq:EquationsSetNormal                                       |
+| 矩阵                | def:Matrix                                                  |
+| 系数矩阵与增广矩阵    | def:CoefficientAugmentedMatrix                              |
+| 系数矩阵与增广矩阵    | matrix:CoefficientAugmentedMatri                            |
+| 矩阵的初等变换        | def:ElementaryTransformationsOfMatrix                       |
+| 行阶梯形             | def:RowEchelonForm                                          |
+| 行阶梯形             | matrix:RowEchelonForm                                       |
+| 行简化阶梯形         | def:rref                                                    |
+| 行简化阶梯形         | matrix:rref                                                 |
+| 线性方程组解的判别定理 | thm:DeterminationThmForSolutionsOfLinearSystemsOfEquations               |
+
+*** 齐次与非齐次线性方程组 sec:113
+
+| 齐次线性方程组                  | def:HomogeneousLinearEquations                                        |
+| 齐次线性方程组                  | eq:HomogenenousLinearEquations                                        |
+| 非齐次线性方程组                | def:NonHomogenenousLinearEquation                                     |
+| 非齐次线性方程组                | eq:NonHomogenenousLinearEquations                                     |
+| 齐次线性方程组解的判别定理        | thm:DeterminationThmForSolutionsOfHomogeneousLinearSystemsOfEquations |
+| 齐次线性方程组存在非零解的充分条件 | pro:11thirteen                                                        |
+
+** 向量空间与相关性 sec:12
+
+*** 平面向量 sec:121
+| 平面向量的加法和数乘                | eq:AdditionAndScalarMultiplicationOfPlaneVectors |
+| 平面向量共线的充要条件              | pro:PlaneVectorCollinear                         |
+
+*** m维向量与向量空间$\mathbb{R}^m$ sec:122
+| m维向量                          | def:MDimensionalVector                           |
+| 零向量和负向量                     | def:ZeroVectorAndNegativeVector                  |
+| 实向量和实向量空间$\mathrm{R}^{m}$ | def:RealVectorSpace                              |
+| m维向量的加法                     | def:AdditionOfMDimensionalVectors                |
+| m维向量的数乘                     | def:ScrlarMultiplicationOfMDimensioalVectors}    |
+| 加法公理                          | axi:VectorsAddition                              |
+| 数乘公理                          | axi:VectorScalarMultiplication                   |
+| 推论1.2.4                        | cor：Vectors124                                  |
+| 数域                             | def:NumberField                                  |
+
+*** 线性相关性 sec:123
+| 线性组合 | def:LinearCombination  |
+| 线性相关 | def:LinearDependence   |
+| 线性无关 | def:LinearIndependence |
+|         |                        |

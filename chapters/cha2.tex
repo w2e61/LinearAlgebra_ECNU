@@ -1,0 +1,229 @@
+% chapters/cha2.tex
+
+\chapterimage{Hyouka1.png}
+\chapter{矩阵}
+\label{chap:2}
+
+\section{映射的运算}
+\label{sec:21}
+need to be completed
+
+\section{矩阵的运算}
+\label{sec:22}
+need to be completed
+
+\subsection{加法和数乘}
+\label{sec:221}
+
+我们需要找到一个矩阵是另两个矩阵$\bm{A},\bm{B}$的和，也就是说需要找到符合条件的矩阵$(\bm{A}+\bm{B})$，使\[
+\forall \bm{x} , (\bm{A}+\bm{B})\bm{x} = \bm{Ax} + \bm{Bx} \]
+这个表达非常的含糊其辞：什么叫$\forall x$？
+
+need to be completed
+
+\subsection{乘法（复合）}
+\label{sec:222}
+
+现在我们来讨论由矩阵引导的线性映射的复合，即需要对$\forall \bm{x}$求$\bm{A}(\bm{Bx})$，为此，需要保证$\bm{Bx}$的陪域在$\bm{A}$的定义域之内，因而两者需要有相同的维数，亦即说：
+\begin{center}
+  \textbf{外映射的列数必须等于内映射的行数}，这也就是中间向量的维数。
+\end{center}\[
+  \begin{array}[H]{*{5}{c} l}
+    \bm{AB}:& \mathbb{R}^{n} & \xrightarrow{\bm{B}} & \mathbb{R}^{s} & \xrightarrow{\bm{A}} & \mathbb{R}^{m}\\
+            & \bm{x}         & \mapsto           & \bm{y} = \bm{Bx} & \mapsto & \bm{z} = \bm{Ay} = \bm{A}(\bm{Bx}) = (\bm{AB} )\bm{x} \\
+  \end{array}
+\]
+\begin{definition}{矩阵的乘法}
+  \label{def:MultiplicationOfMatrix}
+  设有矩阵$\bm{A} = (a_{ik})_{m \times s}$和\( \bm{B} = (b_{kj})_{s \times n} \)，则矩阵$\bm{A}$和$\bm{B}$的复合，或被称为\textbf{矩阵的乘法}为：
+  \begin{equation}
+    \label{eq:MultiplicationOfMatrix}
+    \bm{AB} = \left( \sum^{s}_{k=1} \left( a_{ik}b_{kj} \right) \right)_{m\times n}
+  \end{equation}
+\end{definition}
+\begin{remark}
+  事实上，上述定义~\ref{def:MultiplicationOfMatrix}是可以由矩阵左乘向量的定义~\ref{def:LeftMultiplicationOfMatrix}推出的，如下所示：
+  \begin{align*}
+    \bm{A}(\bm{Bx}) &= (a_{ik})_{m \times s} \left( \sum_{j=1}^{n}\left( k_{kj}x_{j} \right) \right)_{s \times 1}\\
+                    &= \left( \sum_{k=1}^{s} a_{ik} \sum_{j=1} \right)_{m \times 1} \\
+                    &= \left( \sum_{j=1}^{n} \left( \sum_{k=1}^{s}\left(  a_{ik}b_{kj} \right) \right) x_{j} \right)_{m \times 1}\\
+                    &= \left( \sum^{s}_{k=1} \left( a_{ik}b_{kj} \right) \right)_{m\times n} \bm{x}
+  \end{align*}
+\end{remark}
+\begin{note}
+  通过上述矩阵乘法的定义（由数字给出），可以直接发现以下两点：
+  \begin{enumerate}
+  \item   \textbf{外映射的列数必须等于内映射的行数}，这是矩阵乘法有意义的充要条件
+  \item 在$\bm{AB}$有意义的前提下，乘积矩阵$\bm{AB}$的行数和列数分别等于$\bm{A}$的行数和$\bm{B}$的列数，且其$(i,j)$元素等于$\bm{A}$的第i行与$\bm{B}$的第j列对应元素之和。\label{item:MultiplicationOfMatrix1}
+
+  \end{enumerate}
+\end{note}
+
+接下来，我们来考察矩阵乘法的性质。
+
+%例2.2.6
+\begin{example}
+  need to be completed 例2.2.6
+\end{example}
+\begin{remark}
+  这个例子告诉我们，矩阵乘法一般不满足\textbf{乘法交换律}。即$\bm{AB} = \bm{BA}$不一定成立。
+\end{remark}
+
+% 例2.2.7
+\begin{example}
+  need to be completed 例2.2.7
+\end{example}
+\begin{remark}
+  这个例子告诉我们，矩阵乘法一般不满足\textbf{乘法消去律}。即\textbf{不能}通过$\bm{AC} = \bm{BC}$和$\bm{C} \neq \bm{0}$推出$\bm{A} = \bm{B}$。后文将会知道，这其实需要补充条件：$\bm{C}$是可逆的。
+\end{remark}
+
+% 例2.2.8
+\begin{example}
+  need to be completed 例2.2.8
+\end{example}
+\begin{remark}
+  这个例子告诉我们，已知$\bm{AB} = \bm{0}$，也\textbf{不能}得到$\bm{A} = \bm{0}$或$\bm{B} = bm{0}$。也可以认为此例是上例的特殊情况，即不能通过消去一个矩阵而得到另一个矩阵必为0的矩阵。同样的，如果我们补充了其中一个矩阵是可逆的，就可以得到另一个矩阵是零矩阵的结论。
+\end{remark}
+
+接下来，我们从向量的角度看待矩阵的乘法。在第~\ref{sec:1321}页中我们指出，可以将矩阵看成由多个行（列）向量排成的阵列。接下来用向量的方法表述矩阵的乘法：
+\begin{definition}{矩阵的乘法（向量）}
+  \label{def:MultiplicationOfMatrixByVectors}
+  \begin{enumerate}
+  \item 前文~\ref{item:MultiplicationOfMatrix1}即是说，乘积矩阵$\bm{AB}$的$(i,j)$元素等于$\bm{A}$的第i行构成的向量点乘$\bm{B}$的第j列构成的向量。
+  \item $\bm{AB}$的第i列，是$\bm{A}$的每一列的线性组合，以$\bm{B}$的第i列作为组合系数。
+  \item $\bm{AB}$的第j行，是$\bm{B}$的每一行的线性组合，以$\bm{A}$的第j行作为组合系数。
+  \item 乘积矩阵是$\bm{A}$的每一列和$\bm{B}$的每一行的乘积之和。（矩阵的秩一分解） %练习3.6.8
+  \end{enumerate}
+\end{definition}
+
+\begin{note}
+  第二、第三种表述可以认为是矩阵的分块运算（将在~\ref{sec:24}中提及）；
+  
+  第一种表述可以认为是第二和第三种表述的展开表述；
+  
+  第四种表述和第一种表述是完全相对的。
+\end{note}
+
+%命题2.2.10
+\begin{proposition}{矩阵乘法的性质}
+
+  \begin{enumerate}
+  \item 零矩阵
+  \item 单位矩阵
+  \item 乘法结合律
+  \item 对加法的分配律
+  \item 对数乘的交换律
+  \end{enumerate}
+\end{proposition}
+
+
+上文我们提到，$\bm{AB} = \bm{BA}$不一定成立，但我们仍然可以给出以下一个定义和三个命题：
+
+% 定义2.2.11
+\begin{definition}{矩阵的相乘可交换}
+  
+\end{definition}
+
+% 命题2.2.12
+\begin{proposition}{可交换的充分条件}
+  
+\end{proposition}
+
+% 命题2.2.13
+\begin{proposition}{可交换的必要条件}
+  
+\end{proposition}
+
+% 命题2.2.14
+\begin{proposition}
+  若$\bm{D}_{1}$和$\bm{D}_{2}$为同阶对角阵，则必有$\bm{D}_{1} \bm{D}_{2} = \bm{D}_{2} \bm{D}_{1}$
+\end{proposition}
+
+\subsection{方幂}
+\label{sec:223}
+
+\begin{definition}{矩阵的方幂}
+  \label{def:PowerOfMatrix}
+  need to be completed soon
+\end{definition}
+
+对于特殊矩阵，有一些便捷的计算方幂的方法，如下所示：
+
+% 例2.2.15
+\begin{example}
+  设对角矩阵\(\bm{D} = \mathrm{diag}(d_{1},d_{2},\cdots,d_{n} ,l \in \mathbb{N}^{+}\),计算$\bm{D}^{l}$
+\end{example}
+\begin{solution}
+  通过归纳法，不难得到：\[
+    \bm{D}^{l} = \mathrm{diag}(d_{1}^{l},d_{2}^{l},\cdots,d_{n}^{l})
+    \]
+  \end{solution}
+
+  %例2.2.16
+  \begin{example}
+设\(\bm{A} =
+\begin{pmatrix}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  0 & 0 & 0 \\
+\end{pmatrix}
+\)，$l$为正整数。计算\(\bm{J}^{l} \)
+  \end{example}
+  \begin{solution}
+    通过直接计算知道：\[
+ 2
+      \]
+  \end{solution}
+  \begin{remark}
+    此例题告诉我们，如果有要求计算方幂的题目，可以试试是否在几次方幂后变为零矩阵。或者将原矩阵拆成两个矩阵的和，使其中一个矩阵在低次方幂后变为零矩阵。（此思路类似于微积分中用莱布尼茨公式求解高阶导数的方法。），参见~\ref{col:BinomialExpansionOfMatrix}。
+  \end{remark}
+
+  % 例2.2.17
+  \begin{example}
+    need to be completed soon 例2.2.17
+  \end{example}
+  \begin{solution}
+    
+  \end{solution}
+  \begin{remark}
+    一个秩为一的矩阵分解为行向量和列向量的乘积形式，从而可以利用乘法结合律简化计算。%此处运用到原书命题3.5.6,需要补全引用
+  \end{remark}
+
+  根据一般矩阵乘法的结合律，可以得到以下推论：
+  \begin{corollary}{矩阵方幂的运算性质}
+    \label{cor:2218}
+    对任意的n阶方幂$\bm{A}$，以及任意的$k,l \in \mathrm{N}^{+}$，有：
+    \begin{enumerate}
+    \item \(\bm{A}^{k} \bm{A}^{l} = \bm{A}^{k+l} \)
+    \item \( \left( \bm{A}^{k} \right)^{l} = \bm{A}^{kl}  \)
+    \end{enumerate}
+    
+  \end{corollary}
+
+  此外，若两个方阵符合可交换条件，则可以对它们和的方阵进行整数次的二项式展开：
+  \begin{corollary}
+    \label{col:BinomialExpansionOfMatrix}
+    need to be completed
+  \end{corollary}
+  \begin{proof}
+    need to be completed
+  \end{proof}
+
+  \subsection{转置}
+\label{sec:224}
+
+\begin{definition}{矩阵的转置}
+  \label{def:TransposeOfMatrix}
+  need to be completed
+\end{definition}
+\begin{note}
+  从矩阵中每个数的角度，矩阵的转置似乎只是翻转了数字的排列。然而，若从行列向量的角度观察矩阵，
+\end{note}
+
+
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: "../main.tex"
+%%% coding: utf-8
+%%% End:

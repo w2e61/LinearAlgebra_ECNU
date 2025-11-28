@@ -1,0 +1,17 @@
+# .gitignore for LinearAlgebra_ECNU
+
+*~
+*.log
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fls
+*.out
+*.xml
+*.toc
+_region_.tex
+auto/
+LinearAlgebraPhotos/
+tikzs/tikztest*
+figures/*.pdf

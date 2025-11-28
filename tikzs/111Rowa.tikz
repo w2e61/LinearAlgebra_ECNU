@@ -1,0 +1,33 @@
+% *-* coding: utf-8 *-*
+% 1.1.1 row picture a
+
+\begin{tikzpicture}[scale=1]
+
+   % 绘制网格
+    \draw[gray!20] (-1,-4) grid (4,2);
+   
+    % 绘制坐标轴
+    \draw[->, thick] (-1,0) -- (4,0) node[right] {$x_{1}$};
+    \draw[->, thick] (0,-4) -- (0,2) node[above] {$x_{2}$};
+    
+    
+    % 标记坐标轴刻度
+    \foreach \x in {-1,1,2,3,4}
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {$\x$};
+    \foreach \y in {-4,-3,-2,-1,1,2}
+        \draw (0.1,\y) -- (-0.1,\y) node[left] {$\y$};
+    
+    % 绘制直线 x+y=1 (红色)
+    \draw[red, thick, domain=-0.5:3.5] plot (\x, {1-\x}) node[above right] {$x_{1}+x_{2}=1$};
+    
+    % 绘制直线 x-y=3 (蓝色)
+    \draw[blue, thick, domain=-0.5:3.5] plot (\x, {\x-3}) node[above right] {$x_{1}-x_{2}=3$};
+    
+    % 计算并标记交点 (2,-1)
+    \coordinate (A) at (2,-1);
+    \fill[violet] (A) circle (2pt);
+    \node[right, violet] at (A) {$(2,-1)$};
+    
+    % 标记原点
+    \node[below left] at (0,0) {$O$};
+\end{tikzpicture}

@@ -1,0 +1,41 @@
+% main.tex
+
+\documentclass[lang=cn,10pt,newtx,thmcnt=section,chinesefont=founder]{vividbook}
+% mode = fancy
+
+\input{header.tex}
+
+\title{线性代数笔记：基于ECNU讲义}
+\subtitle{从入门到入土}
+
+\author{吃盐水棒冰活下去！}
+\date{\today}
+\version{V0}
+
+\logo{YamadaRyo1.png}
+\cover{frontcover.png}
+
+
+\extrainfo{在没有结束前，总要做很多没有意义的事，这样才可以在未来某一天，用这些无意义的事去堵住那些讨厌的缺口}
+
+\addbibresource[location=local]{reference.bib} % 参考文献
+
+\begin{document}
+\chapterimage{FutabaRio.png}
+\maketitle
+\frontmatter
+\tableofcontents
+\mainmatter
+\input{chapters/cha1.tex}
+\input{chapters/cha2.tex}
+
+%\input{chapters/cha4.tex}
+\cite{test2023}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% coding: utf-8
+%%% End:
