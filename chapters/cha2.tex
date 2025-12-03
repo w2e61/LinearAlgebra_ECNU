@@ -4,6 +4,18 @@
 \chapter{矩阵}
 \label{chap:2}
 
+\begin{center}
+  你不爱听摇滚，我明明知道。我却用这样那样的歌，度过渴望爱情的时光。
+
+{\footnotesize ロックなんか聴かないと，思うけれども。僕はこんな歌であんな歌で，恋に焦がれてきたんだ。}
+
+\end{center}
+\rightline{{\small ——あいみょん《君はロックを聴かない》}}
+\vspace{-5pt}
+\begin{center}
+    \pgfornament[width=0.36\linewidth,color=lsp]{88}
+  \end{center}
+  
 \section{映射的运算}
 \label{sec:21}
 need to be completed
@@ -15,11 +27,19 @@ need to be completed
 \subsection{加法和数乘}
 \label{sec:221}
 
+\subsubsection{矩阵的加法}
+\label{sec:2211}
+
 我们需要找到一个矩阵是另两个矩阵$\bm{A},\bm{B}$的和，也就是说需要找到符合条件的矩阵$(\bm{A}+\bm{B})$，使\[
 \forall \bm{x} , (\bm{A}+\bm{B})\bm{x} = \bm{Ax} + \bm{Bx} \]
 这个表达非常的含糊其辞：什么叫$\forall x$？
 
 need to be completed
+
+\subsubsection{矩阵的数乘}
+\label{sec:2212}
+
+
 
 \subsection{乘法（复合）}
 \label{sec:222}
@@ -148,6 +168,10 @@ need to be completed
 \end{definition}
 
 对于特殊矩阵，有一些便捷的计算方幂的方法，如下所示：
+\subsubsection{特殊矩阵直接计算}
+\label{sec:2231}
+
+
 
 % 例2.2.15
 \begin{example}
@@ -159,24 +183,8 @@ need to be completed
     \]
   \end{solution}
 
-  %例2.2.16
-  \begin{example}
-设\(\bm{A} =
-\begin{pmatrix}
-  0 & 1 & 0 \\
-  0 & 0 & 1 \\
-  0 & 0 & 0 \\
-\end{pmatrix}
-\)，$l$为正整数。计算\(\bm{J}^{l} \)
-  \end{example}
-  \begin{solution}
-    通过直接计算知道：\[
- 2
-      \]
-  \end{solution}
-  \begin{remark}
-    此例题告诉我们，如果有要求计算方幂的题目，可以试试是否在几次方幂后变为零矩阵。或者将原矩阵拆成两个矩阵的和，使其中一个矩阵在低次方幂后变为零矩阵。（此思路类似于微积分中用莱布尼茨公式求解高阶导数的方法。），参见~\ref{col:BinomialExpansionOfMatrix}。
-  \end{remark}
+\subsubsection{观察矩阵分解}
+\label{sec:2232}
 
   % 例2.2.17
   \begin{example}
@@ -189,7 +197,11 @@ need to be completed
     一个秩为一的矩阵分解为行向量和列向量的乘积形式，从而可以利用乘法结合律简化计算。%此处运用到原书命题3.5.6,需要补全引用
   \end{remark}
 
-  根据一般矩阵乘法的结合律，可以得到以下推论：
+  \subsubsection{矩阵方幂的二项式展开}
+\label{sec:2233}
+
+
+  首先，根据一般矩阵乘法的结合律，可以得到以下推论：
   \begin{corollary}{矩阵方幂的运算性质}
     \label{cor:2218}
     对任意的n阶方幂$\bm{A}$，以及任意的$k,l \in \mathrm{N}^{+}$，有：
@@ -200,25 +212,106 @@ need to be completed
     
   \end{corollary}
 
-  此外，若两个方阵符合可交换条件，则可以对它们和的方阵进行整数次的二项式展开：
-  \begin{corollary}
+    %例2.2.16
+  \begin{example}
+设\(\bm{A} =
+\begin{pmatrix}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  0 & 0 & 0 \\
+\end{pmatrix}
+\)，$l$为正整数。计算\(\bm{J}^{l} \)
+  \end{example}
+  \begin{solution}
+    通过直接计算知道：\[
+ \bm{J}^2 =
+ \begin{pmatrix}
+   0 & 0 & 1 \\
+   0 & 0 & 0 \\
+   0 & 0 & 0 \\
+ \end{pmatrix},\quad
+ \bm{J}^3 = \bm{J} \bm{J}^2 =
+ \begin{pmatrix}
+   0 & 1 & 0 \\
+   0 & 0 & 1 \\
+   0 & 0 & 0 \\
+ \end{pmatrix}
+ \begin{pmatrix}
+   0 & 0 & 1 \\
+   0 & 0 & 0 \\
+   0 & 0 & 0 \\
+ \end{pmatrix} = \bm{0}  \]
+当$l \geq 3$时，\( \bm{J}^l = \bm{J}^{l-3} \bm{J}^3 = \bm{0} \)
+  \end{solution}
+  \begin{remark}
+    此例题告诉我们，如果有要求计算方幂的题目，可以试试是否在几次方幂后变为零矩阵。或者将原矩阵拆成两个矩阵的和，使其中一个矩阵在低次方幂后变为零矩阵。（此思路类似于微积分中用莱布尼茨公式求解高阶导数的方法。）下面的推论~\ref{col:BinomialExpansionOfMatrix}将介绍这种方法。
+  \end{remark}
+
+  
+  \begin{corollary}{矩阵方幂的二项式展开}
     \label{col:BinomialExpansionOfMatrix}
-    need to be completed
+    假设有两个方阵$\bm{A},\bm{B}$，满足\(\bm{A}\bm{B} = \bm{B}\bm{A} \)，则对$n \in \mathbb{N}^+$，有：
+    \begin{equation}
+      \label{eq:BinomialExpansionOfMatrix}
+      \left( \bm{A} + \bm{B} \right)^n = \sum_{i=0}^n \left( C_n^i \bm{A}^i \bm{B}^{n-i} \right)
+    \end{equation}
   \end{corollary}
   \begin{proof}
-    need to be completed
-  \end{proof}
+   可以用数学归纳法证明，由于方阵可交换，只要将所有$\bm{A}$移至所有$\bm{B}$之前即可，此处不再赘述。
+ \end{proof}
+ \begin{example}
+   need to be completed
+ \end{example}
+ 
 
   \subsection{转置}
 \label{sec:224}
 
 \begin{definition}{矩阵的转置}
   \label{def:TransposeOfMatrix}
-  need to be completed
+  对形如~(\ref{matrix:NormalMatrix})的矩阵$\bm{A}$，其\textbf{转置}被定义为：
+  \begin{equation}
+    \label{matrix:TransposeOfMatrix}
+    \bm{A}^{\mathrm{T}} = \left( a_{ji} \right)_{m \times n} =
+    \begin{pmatrix}
+      a_{11} & a_{21} & \cdots & a_{m1} \\
+      a_{12} & a_{22} & \cdots & a_{m2} \\
+      \vdots & \vdots & \ddots & \vdots \\
+      a_{1n} & a_{2n} & \cdots & a_{mn} \\
+    \end{pmatrix}
+  \end{equation}
 \end{definition}
 \begin{note}
-  从矩阵中每个数的角度，矩阵的转置似乎只是翻转了数字的排列。然而，若从行列向量的角度观察矩阵，
+  从矩阵中每个数的角度，矩阵的转置似乎只是沿对角线翻转了数字的排列。然而，若从行列向量的角度观察矩阵，会发现矩阵$\bm{A}$的列向量变成了矩阵$\bm{A}^{\mathrm{T}}$的行向量，矩阵$\bm{A}$的行向量变成了矩阵$\bm{A}^{\mathrm{T}}$的列向量：
+
+  那么，对原矩阵行向量的线性组合，也就变成了对转置矩阵列向量的线性组合，反之同理。为了给线性组合提供系数，则需要下式成立：
+  \begin{equation}
+    \label{eq:TransposeMatrixTimesVector}\
+    \bm{Ax} = \left( \bm{x}^{\mathrm{T}} \bm{A}^{\mathrm{T}} \right)^{\mathrm{T}}
+  \end{equation}
+  
+  或者我们也可以用向量线性变换的观点：认为转置矩阵以右乘的形式诱导行向量的线性变换，等价于原矩阵以左乘的形式诱导线性变换。
 \end{note}
+
+根据矩阵的定义，可以推出以下性质：
+
+% 命题2.2.19
+\begin{proposition}{转置运算的性质}
+  设$\bm{A}$与$\bm{B}$为任意矩阵，k为任意实数，l为任意自然数，在下列矩阵运算有意义的前提下，有：
+  \begin{enumerate}
+  \item \( \left( \bm{A}^{\mathrm{T}} \right)^{\mathrm{T}} = \bm{A} \)
+  \item \( \left( \bm{A} + \bm{B} \right)^{\mathrm{T}} = \bm{A}^{\mathrm{T}} + \bm{B}^{\mathrm{T}} \)
+  \item \( k \bm{A}^{\mathrm{T}} = \left( k \bm{A} \right)^{\mathrm{T}} \)
+  \item \( \bm{AB}^{\mathrm{T}} = \bm{B}^{\mathrm{T}} \bm{A}^{\mathrm{T}} \)
+  \item \(\left( \bm{A}^l \right)^{\mathrm{T}} = \left( \bm{A}^{\mathrm{T}} \right)^l \)
+  \end{enumerate}
+\end{proposition}
+
+\section{矩阵的逆}
+\label{sec:23}
+
+\section{分块矩阵}
+\label{sec:24}
 
 
 

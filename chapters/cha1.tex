@@ -4,7 +4,14 @@
 
 \chapter{基础知识}
 \label{chap:cha1}
-
+\begin{center}
+    八月已经这么热了，那十二月岂不是会热成炼狱吗？
+\end{center}
+\rightline{—— 坂本 龙司}
+\vspace{-5pt}
+\begin{center}
+    \pgfornament[width=0.36\linewidth,color=lsp]{88}
+\end{center}
 \section{线性方程组与矩阵消元法}
 \label{sec:11}
 
@@ -107,7 +114,9 @@
   \label{def:Matrix}
   一个$m \times n$的\textbf{矩阵}是一个有m行和n列元素的巨型阵列，矩阵中的元素可以使数字、符号，甚至可以是函数。% \footnote{用粗斜体表示，其实是用\verb|\bm|命令打出的记号}
   
-  例如，我们可以将一个$m \times n$的矩阵记作\[
+  例如，我们可以将一个$m \times n$的矩阵记作
+  \begin{equation}
+    \label{matrix:NormalMatrix}
 \bm{A} = (a_{ij})_{m \times n} 
 \begin{pmatrix}
   a_{11} & a_{12} & \ldots & a_{1j} & \ldots & a_{1n} \\
@@ -117,7 +126,7 @@
   \vdots & \vdots &       & \vdots &        & \vdots \\
   a_{m1} & a_{m2} & \ldots & a_{mj} & \ldots & a_{mn} \\
 \end{pmatrix} 
-\]
+\end{equation}
 其中，位于的$i$行和第$j$列的元素$a_{ij}$成为$\bm{A}$的$(i,j)$元素，而$i$和$j$分别称为$a_{ij}$的行标和列标。
 \end{definition}
 
@@ -546,7 +555,9 @@ k \bm{\alpha} = (k a_{1}, k a_{2}, \cdots , k a_{m} )^{\mathrm{T}}
 线性无关的向量组\(\bm{e}_{1},\bm{e}_{2},\cdots,\bm{e}_{m}\)称为$\mathbb{R}^{m}$中的标准坐标向量组。
   \end{definition}
 
-  
+  \subsubsection{用向量线性相关描述解的情况}
+\label{sec:1231}
+
   % 例题1.2.13
   \begin{example}
     \label{eg:12thirteen}
@@ -682,11 +693,14 @@ k \bm{\alpha} = (k a_{1}, k a_{2}, \cdots , k a_{m} )^{\mathrm{T}}
   
 \end{proposition}
 \begin{proof}
-  我们只需证明齐次线性方程组\( \sum\limits_{j=1}^{n} \left( x_{j} \bm{\alpha}_{j} = \bm{0} \right) \)存在非零解。
+  我们只需证明齐次线性方程组\( \sum\limits_{j=1}^{n} \left( x_{j} \bm{\alpha}_{j} = \bm{0} \right) \)存在非零解。根据前面的讨论，设该方程组的系数矩阵为$\bm{A}$，且其对应的阶梯形的阶梯数为$r$，必有\(\bm{r} \leq \mathrm{min}\{ m,n \}<n \)。由命题~\ref{thm:DeterminationThmForSolutionsOfHomogeneousLinearSystemsOfEquations}，知该齐次线性方程组必定有非零解，即其线性相关。
 \end{proof}
 \begin{note}
   命题的意义是，当向量个数超过向量的维数时，一定有“多余”的向量，从而使之线性相关。在平面中，给出三个向量。如果是三个非零向量，从原点出发，按三个向量的方向移动（离开原点），最后一定可以回到原点，不妨用纸笔尝试一下，你是找不到反例的。
 \end{note}
+
+\subsubsection{快速判断线性相关性的技巧}
+\label{sec:1232}
 
 
 根据向量组所含向量的维数和个数，有一些快速判断其线性相关性和无关性的技巧：
@@ -727,7 +741,17 @@ k \bm{\alpha} = (k a_{1}, k a_{2}, \cdots , k a_{m} )^{\mathrm{T}}
   m维向量组\(\bm{\alpha}_{1},\bm{\alpha}_{2},\cdots,\bm{\alpha}_{n} \)线性相关的充分必要条件为：存在向量$\bm{\alpha}_{i}$可被\(\bm{\alpha}_{1},\bm{\alpha}_{2},\cdots,\bm{\alpha}_{i-1},\bm{\alpha}_{i+1} \bm{\alpha}_{n} \)线性表示。
 \end{corollary}
 \begin{proof}
-  need to be completed soon
+  {\Large 必要性：}
+
+  在线性相关的定义~\ref{def:LinearDependence}中，不妨设$k_i \neq 0$，此时，式子可以化为：\[
+    \bm{\alpha}_1 = -\frac{k_1}{k_i} \bm{\alpha}_{1} - \cdots - \frac{k_{i-1}}{k_i} \bm{\alpha}_{i-1} - \frac{k_{i+1}}{k_{i}} \bm{\alpha}_{i+1} - \cdots - \frac{k_n}{k_i} \bm{\alpha}_{n}    \]
+  即存在$\bm{\alpha}_i$可以被其余向量线性表示。
+
+  {\Large 充分性：}
+
+  由题意，若向量组\(\bm{\alpha}_1 ,\bm{\alpha}_2 ,\cdots, \bm{\alpha}_{n}\)中存在$\bm{\alpha}_{i}$满足\[
+    \bm{\alpha}_i = l_1 \bm{\alpha}_1 + \cdots + l_{i-1} \bm{\alpha}_{i-1} + l_{i+1} \bm{\alpha}_{i+1} + \cdots + l_n\bm{\alpha}_n\]，
+  全部移项到等号右侧，至少有$\bm{\alpha}_i$的系数不为0，由定义知，向量组\(\bm{\alpha}_1 ,\bm{\alpha}_2 ,\cdots, \bm{\alpha}_{n}\)线性相关。
 \end{proof}
 
 % 命题1.2.23
@@ -803,7 +827,7 @@ k \bm{\alpha} = (k a_{1}, k a_{2}, \cdots , k a_{m} )^{\mathrm{T}}
     f ( \bm{x} ) = x_{1} f(\bm{e}_{1})+ x_{2} f(\bm{e}_{2}) + \cdots + x_{n} f(\bm{e}_{n} )
   \end{equation}
 
-\subsubsection*{再谈矩阵}
+\subsubsection{再谈矩阵}
 \label{sec:1321}
 
 在前文所给出的矩阵定义~\ref{def:Matrix}中，矩阵可以认为是$m \times n$个数字排成的阵列。但我们也可以将矩阵的每一列或一行视为一个整体。这样，矩阵便是由几行或即列排列而成的。现在我们便有了四种看待矩阵的视角\cite{TheArtOfLinearAlgebra}：一个矩阵 ($m \times n $) 可以被视为$1$个矩阵, $mn$个数, $n$个列和$m$个行。
@@ -840,6 +864,9 @@ k \bm{\alpha} = (k a_{1}, k a_{2}, \cdots , k a_{m} )^{\mathrm{T}}
 转置向量和矩阵则用$\mathrm{T}$标记为
 $\bm{a}^{\mathrm{T}}$和$\bm{A}^{\mathrm{T}}$.
 
+\subsubsection{矩阵与向量的乘法}
+\label{sec:1322}
+
 
 在用这种视角看待矩阵后，为了表达~(\ref{eq:LinearCombinationOfCommonVectors})，我们可以引入矩阵的左乘：
 \begin{definition}{矩阵的左乘}
@@ -863,15 +890,15 @@ $\bm{a}^{\mathrm{T}}$和$\bm{A}^{\mathrm{T}}$.
     \end{pmatrix}
     =
     \begin{pmatrix}
-      \sum\limits _{j=1}^{n} \left( a_{1j} \bm{x}_{j} \right) \\
-      \sum\limits _{j=2}^{n} \left( a_{2j} \bm{x}_{j} \right) \\
+      \sum\limits _{j=1}^{n} \left( a_{1j} x_1 \right) \\
+      \sum\limits _{j=1}^{n} \left( a_{2j} x_2 \right) \\
       \vdots \\
-      \sum\limits _{j=m}^{n} \left( a_{mj} \bm{x}_{j} \right) \\      
+      \sum\limits _{j=1}^{n} \left( a_{mj} x_3 \right) \\      
     \end{pmatrix}
   \end{equation}
 \end{definition}
 \begin{note}
-  上述左乘的定义，完全有数字运算给出，但我们还可以将$\bm{y}$的结果写成以下含有向量的两种形式：
+  上述左乘的定义，完全由数字运算给出，但我们还可以将$\bm{y}$的结果写成以下含有向量的两种形式：
   \begin{enumerate}
   \item 向量点乘形式，即：
     \begin{equation}
@@ -930,11 +957,11 @@ x_{n}
     \end{equation}
   \end{enumerate}
   上述两种情况分别如下图~\ref{fig:LeftMultiplicationOfMatrix}所示：
-\begin{figure}[H]
+  \begin{figure}[H]
+      \centering
+      \includegraphics[scale=1.1]{MatrixTimesVector.eps}
+      \caption{矩阵左乘向量}
     \label{fig:LeftMultiplicationOfMatrix}
-  \centering
-  \includegraphics[scale=1.1]{MatrixTimesVector.eps}
-  \caption{矩阵左乘向量}
 \end{figure}
 \end{note}
 
@@ -955,12 +982,87 @@ x_{n}
 
 上式~\eqref{eq:MapByMatrix}即是\textbf{由矩阵诱导的线性映射}。特别的，若矩阵为方阵，则诱导一个线性映射。
 
-类似的，可以对行向量右乘向量进行线性映射，现在具体给出其定义和讨论：
+类似的，可以对行向量右乘向量进行线性映射，这是一种由行向量到另一个行向量的线性映射，即\[
+  \begin{array}{*{6}{c}}
+    \bm{A}: & \mathbb{R}^n & \rightarrow & \mathbb{R}^{m} && \\
+            &\bm{x}^{\mathrm{T}} & \mapsto & \bm{y}^{\mathrm{T}} & = & \bm{x}^{\mathrm{T}} \bm{A}
+  \end{array}
+\]
+
+接下来具体给出其定义和讨论：
 \begin{definition}{矩阵的右乘运算}
   \label{def:RightMultiplicationOfMatrix}
-  need to be completed
-  
+ 对\(\bm{A} = (a_{ij})_{n \times m} ,a_{ij} \in \mathbb{R}\)矩阵的右乘运算\(\bm{y}^{\mathrm{T}} = \bm{x}^{\mathrm{T}} \bm{A}\)可由数字定义为：
+ \begin{align}
+   \label{eq:RightMultiplicationOfMatrix}
+   (y_1,y_2,\cdots,y_m) = (x_1,x_2,\cdots,x_n)
+   \begin{pmatrix}
+     a_{11}& a_{12} & \cdots & a_{1m} \\
+     a_{21} & a_{22} & \cdots & a_{2m} \\
+     \vdots & \vdots & \ddots & \vdots \\
+     a_{n1} & a_{n2} & \cdots & a_{nm} \\
+   \end{pmatrix} \\
+   = \left( \sum_{i=1}^n \left( x_{i} a_{i1} \right),\sum_{i=1}^n \left( x_{i} a_{i2} \right),\cdots,\sum_{i=1}^n \left( x_{i} a_{im} \right), \right)
+ \end{align}
 \end{definition}
+\begin{note}
+  同样的，我们也可以仿照矩阵左乘列向量，将矩阵右乘行向量作以下两种理解：
+  \begin{enumerate}
+  \item 向量点乘形式：
+    \begin{equation}
+      \label{eq:RightMultiplicationOfMatrixDotProduct}
+      (y_1,y_2,\cdots,y_m) = (x_1,x_2,\cdots,x_n) =
+      \begin{pmatrix}
+        \begin{pmatrix}
+          x_1 \\ x_2 \\ \vdots \\x_n \\
+        \end{pmatrix} \cdot
+        \begin{pmatrix}
+          a_{11} \\ a_{12} \\ \vdots \\ a_{n1} \\
+        \end{pmatrix} &
+        \begin{pmatrix}
+          x_1 \\ x_2 \\ \vdots \\x_n \\
+        \end{pmatrix} \cdot
+        \begin{pmatrix}
+          a_{12} \\ a_{22} \\ \vdots \\ a_{n2} \\
+        \end{pmatrix} &
+                        \cdots &
+         \begin{pmatrix}
+          x_1 \\ x_2 \\ \vdots \\x_n \\
+        \end{pmatrix} \cdot
+        \begin{pmatrix}
+          a_{1m} \\ a_{2m} \\ \vdots \\ a_{nm} \\
+        \end{pmatrix}          
+      \end{pmatrix}
+    \end{equation}
+  \item 行的\textbf{线性组合}形式：
+    \begin{equation}
+     \label{eq:RightMultiplicationOfMatrixLinearCombination}
+    \begin{aligned}
+      (y_1,y_2,\cdots,y_m) =  \\
+      & x_1
+      \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1m} \\
+      \end{pmatrix}  \\
+      +& x_2
+         \begin{pmatrix}
+           a_{21} & a_{22} & \cdots & a_{2m} \\
+         \end{pmatrix} \\
+      +& \cdots \\
+      +& x_n
+         \begin{pmatrix}
+           a_{n1} & a_{n2} & \cdots & a_{nm} \\
+         \end{pmatrix}
+      \end{aligned}
+    \end{equation}
+  \end{enumerate}
+  上述两种情况分别如下图所示：
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{VectorTimesMatrix.eps}
+    \caption{矩阵右乘向量}
+    \label{fig:RightMultiplicationOfMatrix}
+  \end{figure}
+\end{note}
 
 根据上述讨论，左乘和右乘的关键区别在于：
 \begin{center}
